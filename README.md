@@ -18,7 +18,7 @@ Automatiza três ações principais do Git:
 3. Confirma as alterações com uma mensagem fornecida pelo usuário e envia para a branch definida (`git commit` / `git push`)
 
 ### :keyboard: Como usar este script
-Clone o repositório¹, navegue até o diretório, dê permissão de execução e execute o arquivo conforme especificado no script:
+Clone o repositório[^1], navegue até o diretório[^2], dê permissão de execução[^3] e execute o arquivo conforme especificado no script[^4]:
 
 1. `git clone git@github.com:walterowisk/git-add-commit-push.git`
 2. `cd git-add-commit-push`
