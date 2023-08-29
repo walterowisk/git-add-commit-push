@@ -20,10 +20,10 @@ Automatiza três ações principais do Git:
 ### :keyboard: Como usar este script
 Clone o repositório[^1], navegue até o diretório[^2], dê permissão de execução[^3] e execute o arquivo conforme especificado no script[^4]:
 
-[^1] `git clone git@github.com:walterowisk/git-add-commit-push.git`
-[^2] `cd git-add-commit-push`
-[^3] `chmod +x git-add-commit-push.git`
-[^4] `./git-add-commit-push.git nome-da-branch "mensagem de commit"`
+[^1]: `git clone git@github.com:walterowisk/git-add-commit-push.git`
+[^2]: `cd git-add-commit-push`
+[^3]: `chmod +x git-add-commit-push.git`
+[^4]: `./git-add-commit-push.git nome-da-branch "mensagem de commit"`
 
 ### :clap:	 Referência
 
