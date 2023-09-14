@@ -103,6 +103,10 @@ Clone o repositório, navegue até o diretório, dê permissão de execução e 
 3. `chmod +x git-add-commit-push.git`
 4. `./git-add-commit-push.git nome-da-branch "mensagem de commit"`
 
+## :technologist:	 Testando
+- Clique [aqui](https://clipchamp.com/watch/el3j0EbNuif) e veja um vídeo de teste do script.
+
+
 ## :clap:	 Referência
 
  - [Automate Your Git Workflow with this Simple Bash Scripts](https://dev.to/devrx/automate-your-git-workflow-with-this-simple-bash-script-5cm5)
