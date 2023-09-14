@@ -15,7 +15,8 @@ Automatiza quatro ações principais do Git:
 
 1. Alterna para uma branch especificada (`git checkout`);
 2. Verifica se existe alteração no código (`git status`) ;
-3. Confirma as alterações com uma mensagem fornecida pelo usuário e envia para a branch definida (`git commit` / `git push`)
+3. Confirma as alterações com uma mensagem fornecida pelo usuário (`git commit`); 
+4. Envia para a branch definida (`git push`).
 
 ### :knife: Destrinchando o código
 Explicando os trechos do script:
