@@ -4,7 +4,7 @@
   </a>
 </p>
 
-# :robot: Automatizando Git workflow com bash script simples
+# :robot: Automatizando Git workflow com bash script
 
 Todo mundo que utiliza o Git para controle de versão de código precisa executar comandos repetitivos e às vezes maçantes. Isso pode ser resolvido (ou amenizado) de algumas formas, como por exemplo utilizando aliases do próprio Git ou configurando bibliotecas como Commitlint, Husky e Commitizen.
 
