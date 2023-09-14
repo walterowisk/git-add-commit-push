@@ -18,12 +18,13 @@ Automatiza três ações principais do Git:
 3. Confirma as alterações com uma mensagem fornecida pelo usuário e envia para a branch definida (`git commit` / `git push`)
 
 ### :knife: Destrinchando o código
+Explicando os trechos do código:
+
 ```bash
 #!/bin/bash
 
-# Verifica se o usuário forneceu o nome da branch e a mensagem de commit
 if [ "$#" -lt 2 ]; then
-  echo "Usage: $0 <branch_name> <commit_message>"
+  echo "Dica: Use o script no seguinte formato => $0 <branch_name> <commit_message>"
   exit 1
 fi
 
@@ -31,7 +32,59 @@ branch_name="$1"
 commit_message="${2:-Commit automático}"
 
 ```
-Nesta parte inicial do script, ele verifica se o usuário forneceu pelo menos dois argumentos ao chamar o script: o nome da branch e a mensagem de commit. Se não forem fornecidos os argumentos necessários, o script exibe uma mensagem de uso e sai com um código de erro 1.
+Nesta parte inicial do código, ele verifica se o usuário forneceu pelo menos dois argumentos ao chamar o script: o nome da branch e a mensagem de commit. Se não forem fornecidos os argumentos necessários, o script exibe uma mensagem de dica de uso e sai com um código de erro 1.
+
+```bash
+if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  echo "Erro: Repositório atual não é um repositório Git."
+  exit 1
+fi
+
+if ! git ls-remote --exit-code origin; then
+  echo "Erro: Repositório remoto 'origin' não encontrado."
+  exit 1
+fi
+
+```
+Esta parte do script acima verifica se o diretório atual é um repositório Git, usando o comando `git rev-parse`. Se não for um repositório Git, o script exibe uma mensagem de erro e sai. Logo em seguida verifica se o repositório remoto chamado `origin` existe usando o comando `git ls-remote``. Se não existir, é exibida uma mensagem de erro e o fluxo é encerrado.
+
+
+```bash
+git checkout "$branch_name" || exit 1
+
+git status --short
+
+read -p "Digite os números dos arquivos que deseja commitar (separados por espaços): " file_indices
+
+```
+Esta parte do código muda para a branch especificada pelo usuário usando o comando `git checkout`. Se a mudança falhar, o script sai com um código de erro 1. Em seguida exibe a lista de arquivos modificados no formato curto usando o comando `git status --short`. Isso exibe uma lista de arquivos que foram modificados no repositório. Logo em seguida é solicitado ao usuário que insira os números correspondentes à ordem dos arquivos que deseja commitar, separados por espaços.
+
+```bash
+if [ -n "$file_indices" ]; then
+  selected_files=()
+  while read -ra indices; do
+    for index in "${indices[@]}"; do
+      selected_files+=($(git status --short | sed -n "${index}p" | awk '{print $2}'))
+    done
+  done <<< "$file_indices"
+
+  if [ "${#selected_files[@]}" -gt 0 ]; then
+    git add "${selected_files[@]}"
+    git commit -m "$commit_message"
+    git push origin "$branch_name"
+    echo
+    echo "✨️As mudanças foram confirmadas e enviadas com sucesso para a branch $branch_name!!✨️"
+    echo
+  else
+    echo "Nenhum arquivo selecionado para commit. Operação cancelada."
+  fi
+else
+  echo "Nenhum arquivo selecionado para commit. Operação cancelada."
+fi
+
+```
+Por fim, o script processa os números dos arquivos inseridos pelo usuário e adiciona, confirma e faz push apenas dos arquivos selecionados. Se nenhum arquivo válido for selecionado para commit, ele exibe uma mensagem informando. Se os arquivos forem selecionados e commitados com sucesso, ele exibirá uma mensagem de sucesso.
+
 
 ### :keyboard: Como usar este script
 Clone o repositório, navegue até o diretório, dê permissão de execução e execute o arquivo conforme especificado no script:
