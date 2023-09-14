@@ -11,14 +11,15 @@ Todo mundo que utiliza o Git para controle de versão de código precisa executa
 Outra forma de agilizar esse processo é utilizando um bash script que seja capaz de automatizar um fluxo simples poupando comandos repetitivos.
 
 ### :technologist: O que faz este script
-Automatiza três ações principais do Git:
+Automatiza quatro ações principais do Git:
 
 1. Alterna para uma branch especificada (`git checkout`);
 2. Verifica se existe alteração no código (`git status`) ;
 3. Confirma as alterações com uma mensagem fornecida pelo usuário e envia para a branch definida (`git commit` / `git push`)
 
 ### :knife: Destrinchando o código
-Explicando os trechos do código:
+Explicando os trechos do script:
+
 
 ```bash
 #!/bin/bash
@@ -33,6 +34,7 @@ commit_message="${2:-Commit automático}"
 
 ```
 Nesta parte inicial do código, ele verifica se o usuário forneceu pelo menos dois argumentos ao chamar o script: o nome da branch e a mensagem de commit. Se não forem fornecidos os argumentos necessários, o script exibe uma mensagem de dica de uso e sai com um código de erro 1.
+
 
 ```bash
 if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
@@ -59,7 +61,8 @@ read -p "Digite os números dos arquivos que deseja commitar (separados por espa
 ```
 Esta parte do código muda para a branch especificada pelo usuário usando o comando `git checkout`. Se a mudança falhar, o script sai com um código de erro 1. Em seguida exibe a lista de arquivos modificados no formato curto usando o comando `git status --short`. Isso exibe uma lista de arquivos que foram modificados no repositório. Logo em seguida é solicitado ao usuário que insira os números correspondentes à ordem dos arquivos que deseja commitar, separados por espaços.
 
-```bash
+
+```sh
 if [ -n "$file_indices" ]; then
   selected_files=()
   while read -ra indices; do
