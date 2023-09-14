@@ -17,6 +17,22 @@ Automatiza três ações principais do Git:
 2. Verifica se existe alteração no código (`git status`) ;
 3. Confirma as alterações com uma mensagem fornecida pelo usuário e envia para a branch definida (`git commit` / `git push`)
 
+### :knife: Destrinchando o código
+```bash
+#!/bin/bash
+
+# Verifica se o usuário forneceu o nome da branch e a mensagem de commit
+if [ "$#" -lt 2 ]; then
+  echo "Usage: $0 <branch_name> <commit_message>"
+  exit 1
+fi
+
+branch_name="$1"
+commit_message="${2:-Commit automático}"
+
+```
+Nesta parte inicial do script, ele verifica se o usuário forneceu pelo menos dois argumentos ao chamar o script: o nome da branch e a mensagem de commit. Se não forem fornecidos os argumentos necessários, o script exibe uma mensagem de uso e sai com um código de erro 1.
+
 ### :keyboard: Como usar este script
 Clone o repositório, navegue até o diretório, dê permissão de execução e execute o arquivo conforme especificado no script:
 
