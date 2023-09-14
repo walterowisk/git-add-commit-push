@@ -4,13 +4,13 @@
   </a>
 </p>
 
-## :robot: Automatizando Git workflow com bash script simples
+# :robot: Automatizando Git workflow com bash script simples
 
 Todo mundo que utiliza o Git para controle de versão de código precisa executar comandos repetitivos e às vezes maçantes. Isso pode ser resolvido (ou amenizado) de algumas formas, como por exemplo utilizando aliases do próprio Git ou configurando bibliotecas como Commitlint, Husky e Commitizen.
 
 Outra forma de agilizar esse processo é utilizando um bash script que seja capaz de automatizar um fluxo simples poupando comandos repetitivos.
 
-### :technologist: O que faz este script
+## :technologist: O que faz este script
 Automatiza quatro ações principais do Git:
 
 1. Alterna para uma branch especificada (`git checkout`);
@@ -18,7 +18,7 @@ Automatiza quatro ações principais do Git:
 3. Confirma as alterações com uma mensagem fornecida pelo usuário (`git commit`); 
 4. Envia para a branch definida (`git push`).
 
-### :knife: Destrinchando o código
+## :knife: Destrinchando o código
 Explicando os trechos do script:
 
 
@@ -90,7 +90,7 @@ fi
 Por fim, o script processa os números dos arquivos inseridos pelo usuário e adiciona, confirma e faz push apenas dos arquivos selecionados. Se nenhum arquivo válido for selecionado para commit, ele exibe uma mensagem informando. Se os arquivos forem selecionados e commitados com sucesso, ele exibirá uma mensagem de sucesso.
 
 
-### :keyboard: Como usar este script
+## :keyboard: Como usar este script
 Clone o repositório, navegue até o diretório, dê permissão de execução e execute o arquivo conforme especificado no script:
 
 1. `git clone git@github.com:walterowisk/git-add-commit-push.git`
@@ -98,7 +98,7 @@ Clone o repositório, navegue até o diretório, dê permissão de execução e 
 3. `chmod +x git-add-commit-push.git`
 4. `./git-add-commit-push.git nome-da-branch "mensagem de commit"`
 
-### :clap:	 Referência
+## :clap:	 Referência
 
  - [Automate Your Git Workflow with this Simple Bash Scripts](https://dev.to/devrx/automate-your-git-workflow-with-this-simple-bash-script-5cm5)
 
