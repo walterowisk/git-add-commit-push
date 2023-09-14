@@ -10,6 +10,11 @@ Todo mundo que utiliza o Git para controle de versão de código precisa executa
 
 Outra forma de agilizar esse processo é utilizando um bash script que seja capaz de automatizar um fluxo simples poupando comandos repetitivos.
 
+Essa foi a proposta desta [postagem](https://dev.to/devrx/automate-your-git-workflow-with-this-simple-bash-script-5cm5) que encontrei no dev.to dia desses. A ideia de criar um git workflow com algumas linhas de shell script é ótima, mas ao testar encontrei um problema: `git add .`. Não vi uma forma de selecionar uma unstaged change específica para commit caso houvesse mais de um arquivo pendente.
+
+Com isso, fiz algumas modificações, pedi ajuda de IA generativa para adicionar validações de repositório e _voilá_.
+
+
 ## :technologist: O que faz este script
 Automatiza quatro ações principais do Git:
 
